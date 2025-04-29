@@ -24,6 +24,8 @@ jobs:
 
       - name: Build with Maven
         run: mvn -B compile --file pom.xml
+        # Adicione esta linha para verificar se a compilação foi bem-sucedida
+        # if: ${{ success() }}
 
   build-hmg:
     runs-on: ubuntu-latest
@@ -43,6 +45,8 @@ jobs:
 
       - name: Test with Maven
         run: mvn -B test --file pom.xml
+        # Adicione esta linha para verificar se os testes foram bem-sucedidos
+        # if: ${{ success() }}
       - name: Cache SonarQube packages
         uses: actions/cache@v4
         with:
@@ -78,6 +82,8 @@ jobs:
 
       - name: Package project with Maven
         run: mvn -B package --file pom.xml
+        # Adicione esta linha para verificar se o empacotamento foi bem-sucedido
+        # if: ${{ success() }}
 
       - name: Create temporary artifact folder
         run: mkdir staging
